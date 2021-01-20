@@ -11,12 +11,12 @@ plugins:
 volume_mounts:
   - device: /dev/xvdb
     file_system_type: xfs
-    logical_volume: elasticsearch
-    volume_group: data
+    logical_volume: data
+    volume_group: elasticsearch
     mount_point: /var/lib/elasticsearch
 
   - device: /dev/xvdc
     file_system_type: xfs
-    logical_volume: kibana
-    volume_group: data
+    logical_volume: data
+    volume_group: kibana
     mount_point: /var/lib/kibana
