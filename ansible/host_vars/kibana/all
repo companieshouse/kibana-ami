@@ -12,11 +12,11 @@ volume_mounts:
   - device: /dev/xvdb
     file_system_type: xfs
     logical_volume: elasticsearch
-    volume_group: elasticsearch-data
+    volume_group: data
     mount_point: /var/lib/elasticsearch
 
   - device: /dev/xvdc
     file_system_type: xfs
     logical_volume: kibana
-    volume_group: kibana-data
+    volume_group: data
     mount_point: /var/lib/kibana
