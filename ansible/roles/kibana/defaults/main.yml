@@ -1,0 +1,13 @@
+---
+
+elasticsearch_data_directory: /var/lib/elasticsearch
+elasticsearch_home_directory: /usr/share/elasticsearch
+elasticsearch_service_group: elasticsearch
+elasticsearch_service_user: elasticsearch
+elasticsearch_version: 7.10.1
+
+kibana_data_directory: /var/lib/kibana
+kibana_home_directory: /usr/share/kibana
+kibana_service_group: kibana
+kibana_service_user: kibana
+kibana_version: 7.10.1

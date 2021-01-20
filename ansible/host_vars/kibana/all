@@ -1,0 +1,22 @@
+---
+
+pip_package: python3-pip
+pip_install_packages:
+  - name: boto3
+  - name: botocore
+
+plugins:
+  - discovery-ec2
+
+volume_mounts:
+  - device: /dev/xvdb
+    file_system_type: xfs
+    logical_volume: elasticsearch
+    volume_group: elasticsearch-data
+    mount_point: /var/lib/elasticsearch
+
+  - device: /dev/xvdc
+    file_system_type: xfs
+    logical_volume: kibana
+    volume_group: kibana-data
+    mount_point: /var/lib/kibana
