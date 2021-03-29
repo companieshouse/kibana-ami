@@ -1,1 +1,12 @@
 ---
+
+- hosts: kibana
+  become: true
+  roles:
+    - pip
+    - aws-nvme-device-files
+    - mounted-volume
+    - epel
+    - elasticsearch
+    - kibana
+    - prometheus-node-exporter

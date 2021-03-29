@@ -1,10 +1,12 @@
 variable "ami_name_prefix" {
   type        = string
+  default     = "kibana-ami"
   description = "The prefix string that will be used for the name tags of the resulting AMI and snapshot(s); the version string will be appended automatically"
 }
 
 variable "ansible_host_alias" {
   type        = string
+  default     = "kibana"
   description = "The Ansible host alias"
 }
 
@@ -37,10 +39,49 @@ variable "aws_subnet_filter_name" {
   description = "The subnet filter string. Any filter described by the DescribeSubnets API documentation is valid. If multiple subnets match then the one with the most IPv4 addresses free will be used"
 }
 
+variable "elastic_search_data_volume_size_gb" {
+  type        = number
+  default     = 10
+  description = "The EC2 instance elasticsearch data volume size in Gibibytes (GiB)"
+}
+
+variable "force_delete_snapshot" {
+  type        = bool
+  default     = false
+  description = "Delete snapshots associated with AMIs, which have been deregistered by force_deregister"
+}
+
+variable "force_deregister" {
+  type        = bool
+  default     = false
+  description = "Deregister an existing AMI if one with the same name already exists"
+}
+
+variable "kibana_data_volume_size_gb" {
+  type        = number
+  default     = 10
+  description = "The EC2 instance kibana data volume size in Gibibytes (GiB)"
+}
+
 variable "playbook_file_path" {
   type        = string
   default     = "../ansible/playbook.yml"
   description = "The relative path to the Ansible playbook file"
+}
+
+variable "resource_bucket_name" {
+  type        = string
+  description = "The name of the S3 resources bucket"
+}
+
+variable "resource_bucket_elasticsearch_prefix" {
+  type        = string
+  description = "The object prefix for Elasticsearch packages within the S3 resources bucket"
+}
+
+variable "resource_bucket_kibana_prefix" {
+  type        = string
+  description = "The object prefix for Kibana packages within the S3 resources bucket"
 }
 
 variable "root_volume_size_gb" {

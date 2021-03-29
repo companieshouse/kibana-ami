@@ -1,0 +1,33 @@
+---
+
+- name: Create temporary directory
+  tempfile:
+    state: directory
+  register: temp_dir
+
+- name: Download Kibana rpm {{ resource_bucket_kibana_prefix }}/kibana-{{ kibana_version }}-x86_64.rpm
+  aws_s3:
+    bucket: "{{ resource_bucket_name }}"
+    object: "{{ resource_bucket_kibana_prefix }}/kibana-{{ kibana_version }}-x86_64.rpm"
+    dest: "{{ temp_dir.path }}/kibana-{{ kibana_version }}-x86_64.rpm"
+    mode: get
+
+- name: Install rpm {{ temp_dir.path }}/kibana-{{ kibana_version }}-x86_64.rpm
+  yum:
+    name: "{{ temp_dir.path }}/kibana-{{ kibana_version }}-x86_64.rpm"
+    state: present
+
+- name: Stop the kibana service
+  service:
+    name: kibana
+    state: stopped
+
+- name: Disable the kibana service
+  service:
+    name: kibana
+    enabled: no
+
+- name: Remove temporary directory
+  file:
+    path: temp_dir.path
+    state: absent
