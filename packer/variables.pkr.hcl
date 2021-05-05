@@ -1,3 +1,8 @@
+variable "ami_account_ids" {
+  type        = list(string)
+  description = "A list of account IDs that have access to launch the resulting AMI(s)"
+}
+
 variable "ami_name_prefix" {
   type        = string
   default     = "kibana-ami"
