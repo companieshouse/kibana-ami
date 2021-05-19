@@ -9,9 +9,9 @@ roles:
     name: elasticsearch
     version: 1.0.0
 
-  - src: https://github.com/geerlingguy/ansible-role-repo-epel
+  - src: https://github.com/robertdebock/ansible-role-epel
     name: epel
-    version: 3.0.0
+    version: 3.0.4
 
   - src: https://github.com/companieshouse/ansible-role-mounted-volume
     name: mounted-volume
