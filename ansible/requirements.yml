@@ -7,7 +7,7 @@ roles:
 
   - src: https://github.com/companieshouse/ansible-role-elasticsearch
     name: elasticsearch
-    version: 1.0.0
+    version: feature/update-ansible-python-interpreter
 
   - src: https://github.com/robertdebock/ansible-role-epel
     name: epel
