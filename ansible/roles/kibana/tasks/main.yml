@@ -7,7 +7,7 @@
 
 - name: Download Kibana rpm {{ resource_bucket_kibana_prefix }}/kibana-{{ kibana_version }}-x86_64.rpm
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: "{{ python_interpreter }}"
   aws_s3:
     bucket: "{{ resource_bucket_name }}"
     object: "{{ resource_bucket_kibana_prefix }}/kibana-{{ kibana_version }}-x86_64.rpm"
