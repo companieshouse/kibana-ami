@@ -9,7 +9,7 @@ roles:
     name: elasticsearch
     version: 1.0.1
 
-  - src: https://github.com/robertdebock/ansible-role-epel
+  - src: https://github.com/companieshouse/ansible-role-epel
     name: epel
     version: 3.0.4
 
