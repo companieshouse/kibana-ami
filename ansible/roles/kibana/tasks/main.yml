@@ -19,6 +19,16 @@
     name: "{{ temp_dir.path }}/kibana-{{ kibana_version }}-x86_64.rpm"
     state: present
 
+- name: Install amazon cloudwatch agent
+  yum:
+    name: amazon-cloudwatch-agent
+    state: present
+
+- name: Disable amazon cloudwatch agent
+  service:
+    name: amazon-cloudwatch-agent
+    state: stopped
+
 - name: Stop the kibana service
   service:
     name: kibana

@@ -1,0 +1,25 @@
+---
+- name: Create concourse log file
+  file:
+    path: "{{ logging_logfile }}"
+    owner: syslog
+    group: adm
+    mode: 0644
+    state: touch
+
+- name: Install concourse rsyslog config
+  template:
+    src: "etc/rsyslog.d/40-concourse.conf.j2"
+    dest: "/etc/rsyslog.d/40-concourse.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart rsyslog
+
+- name: Install concourse logrotate config
+  template:
+    src: "etc/logrotate.d/concourse.j2"
+    dest: "/etc/logrotate.d/concourse"
+    owner: root
+    group: root
+    mode: 0644
