@@ -1,15 +1,13 @@
 {{ logging_logfile }}
 {
-    su root syslog
-    create 0644 syslog adm
+    create 0644 root root
     rotate 7
     daily
     missingok
     notifempty
     delaycompress
-    compress
     postrotate
-        /usr/lib/rsyslog/rsyslog-rotate
+        systemctl restart rsyslog > /dev/null 2>&1
     endscript
+    compress
 }
-
