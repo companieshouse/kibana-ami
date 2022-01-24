@@ -9,4 +9,5 @@
     - epel
     - elasticsearch
     - kibana
+    - logging
     - prometheus-node-exporter
