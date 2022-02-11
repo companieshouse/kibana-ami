@@ -1,0 +1,3 @@
+---
+logging_logfile: "/var/log/kibana"
+logging_program_name: "kibana"

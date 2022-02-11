@@ -1,0 +1,13 @@
+{{ logging_logfile }}
+{
+    create 0644 root root
+    rotate 7
+    daily
+    missingok
+    notifempty
+    delaycompress
+    postrotate
+        systemctl restart rsyslog > /dev/null 2>&1
+    endscript
+    compress
+}

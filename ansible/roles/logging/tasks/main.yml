@@ -1,0 +1,25 @@
+---
+- name: Create kibana log file
+  file:
+    path: "{{ logging_logfile }}"
+    owner: root
+    group: root
+    mode: 0644
+    state: touch
+
+- name: Install kibana rsyslog config
+  template:
+    src: "etc/rsyslog.d/40-kibana.conf.j2"
+    dest: "/etc/rsyslog.d/40-kibana.conf"
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart rsyslog
+
+- name: Install kibana logrotate config
+  template:
+    src: "etc/logrotate.d/kibana.j2"
+    dest: "/etc/logrotate.d/kibana"
+    owner: root
+    group: root
+    mode: 0644
